@@ -43,7 +43,8 @@ body {
 /* Header */
 .h-wrap { display:flex; gap:16px; align-items:center; }
 .h-icon { font-size:1.8rem; }
-.h-title{font-size:2.2rem;font-weight:800;margin:0;letter-spacing:.1px}
+.h-title{font-size:2.2rem;font-weight:800;margin:0;letter-spacing:.1px;display:flex;align-items:baseline;gap:10px}
+.ver{font-size:.9rem;font-weight:700;color:#b07;opacity:.75}
 .h-sub{color:#7b7b7b;margin-top:2px}
 .header-accent{height:6px;background:linear-gradient(90deg,#ffdee8,#ffe7f1,#fff0f7,#e8fff3,#def9ec);border-radius:999px;margin:10px 0 18px;}
 
@@ -133,7 +134,7 @@ input:invalid { box-shadow:none !important; border-color:#ddd !important; }
 # ---------- Header
 st.markdown(
     "<div class='h-wrap'><div class='h-icon'>💗</div>"
-    "<div><div class='h-title'>JunnuGPT</div>"
+    "<div><div class='h-title'>JunnuGPT <span class='ver'>v9.1.21</span></div>"
     "<div class='h-sub'>Inside jokes, little teases, open warmth, velvet sarcasm, easy smiles — unsaid care.</div>"
     "</div></div>",
     unsafe_allow_html=True
@@ -218,5 +219,6 @@ with st.sidebar:
         st.session_state.last_latency_ms = None
         st.rerun()
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
 
 
