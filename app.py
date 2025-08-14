@@ -30,6 +30,11 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 html, body, [class*="css"] { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial; }
 .main .block-container { padding-top: 1.25rem; padding-bottom: 9rem; max-width: 860px; }
+/* Hide Streamlit's "Press Enter to submit form" hint */
+[data-testid="stForm"] [data-testid="stTextInput"] [aria-live="polite"]{display:none !important;}
+/* Fallback for older builds */
+[data-testid="stTextInput"] [role="status"]{display:none !important;}
+
 
 /* Soft bg */
 body {
@@ -235,6 +240,7 @@ with st.sidebar:
        st.rerun()
 
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
 
 
 
