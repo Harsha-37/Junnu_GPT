@@ -140,23 +140,23 @@ st.markdown(
     unsafe_allow_html=True
 )
 st.markdown("<div class='header-accent'></div>", unsafe_allow_html=True)
-
-# ---------- Session
-# ---------- Session (seed with just 2 examples)
-if "messages" not in st.session_state:
+# ---------- Seed helper: only 2 demo exchanges
+def _seed_two_examples():
     # keep only the system persona from your original init
     base = [m for m in init_messages() if m.get("role") == "system"]
 
-    DEMO_2 = [
-        # Example 1
+    demo = [
         {"role": "user", "content": "Birthday dare: naku oka secret level hint ivvu. If I find it, I get a virtual hug? 😉"},
         {"role": "assistant", "content": "Deal. Clue: **v9.1.21** — chuddu, adi header daggara unde. 💗"},
-        # Example 2
         {"role": "user", "content": "Moon check-in: still orbiting around U. Na next year kosam oka blessing cheppu."},
-        {"role": "assistant", "content": "May your small braves add up to big magic. Nuvvu light avvali—tapakunda! ✨"}
+        {"role": "assistant", "content": "May your small braves add up to big magic. Nuvvu light avvali—tapakunda! ✨"},
     ]
+    return base + demo
 
-    st.session_state.messages = base + DEMO_2
+# ---------- Session
+if "messages" not in st.session_state:
+    st.session_state.messages = _seed_two_examples()
+
 
 if "is_thinking" not in st.session_state:
     st.session_state.is_thinking = False
@@ -230,10 +230,12 @@ if sent:
 with st.sidebar:
     st.markdown("### Controls")
     if st.button("🔁 Reset chat"):
-        st.session_state.messages = init_messages()
-        st.session_state.last_latency_ms = None
-        st.rerun()
+       st.session_state.messages = _seed_two_examples()
+       st.session_state.last_latency_ms = None
+       st.rerun()
+
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
 
 
 
