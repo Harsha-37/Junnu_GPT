@@ -34,6 +34,9 @@ html, body, [class*="css"] { font-family: 'Inter', system-ui, -apple-system, Seg
 [data-testid="stForm"] [data-testid="stTextInput"] [aria-live="polite"]{display:none !important;}
 /* Fallback for older builds */
 [data-testid="stTextInput"] [role="status"]{display:none !important;}
+/* extra-robust hide */
+[data-testid="stForm"] [aria-live="polite"],
+[data-testid="stForm"] [role="status"] { display:none !important; }
 
 
 /* Soft bg */
@@ -240,6 +243,7 @@ with st.sidebar:
        st.rerun()
 
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
 
 
 
