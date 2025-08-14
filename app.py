@@ -3,17 +3,26 @@ import os
 import time
 from dotenv import load_dotenv
 import streamlit as st
-from chat_junnu import init_messages, chat_once
 
 # ---------- Page config (must be first st.*)
 st.set_page_config(page_title="JunnuGPT", page_icon="💗", layout="wide")
 
-# ---------- Env
+# ---------- Secrets / Env (set this BEFORE importing chat_junnu)
+# Cloud: OPENAI_API_KEY must be in Settings → Secrets
+if "OPENAI_API_KEY" in st.secrets:
+    os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+
+# Local dev: also load .env if present (doesn't overwrite what's already set)
 load_dotenv()
+
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key or api_key.strip() == "":
-    st.error("OPENAI_API_KEY missing. Add it to .env (local) or Secrets (cloud).")
+    st.error("OPENAI_API_KEY missing. Add it in Settings → Secrets (cloud) or .env (local).")
     st.stop()
+
+# ⬇️ Only now import the module that reads os.getenv at import-time
+from chat_junnu import init_messages, chat_once
+
 
 # ---------- CSS (modern look + pretty input)
 st.markdown("""
@@ -209,3 +218,4 @@ with st.sidebar:
         st.session_state.last_latency_ms = None
         st.experimental_rerun()
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
