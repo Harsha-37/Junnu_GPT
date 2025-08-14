@@ -208,7 +208,7 @@ if sent:
             finally:
                 st.session_state.is_thinking = False
                 st.session_state.last_latency_ms = (time.time() - t0) * 1000.0
-        st.experimental_rerun()
+        st.rerun()
 
 # ---------- Sidebar
 with st.sidebar:
@@ -216,6 +216,7 @@ with st.sidebar:
     if st.button("🔁 Reset chat"):
         st.session_state.messages = init_messages()
         st.session_state.last_latency_ms = None
-        st.experimental_rerun()
+        st.rerun()
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
 
