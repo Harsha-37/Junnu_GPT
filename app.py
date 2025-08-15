@@ -155,8 +155,8 @@ def _seed_two_examples():
 
     demo = [
         {"role": "user", "content": "Birthday dare: naku oka secret level hint ivvu. If I find it, I get a virtual hug? 😉"},
-        {"role": "assistant", "content": "Deal. Clue: **v9.1.21** — chuddu, adi header daggara unde. 💗"},
-        {"role": "user", "content": "Moon check-in: still orbiting around U. Na next year kosam oka blessing cheppu."},
+        {"role": "assistant", "content": "Deal. Clue: adhi header daggara undi. 💗"},
+        {"role": "user", "content": " still orbiting around U. Na next year kosam oka blessing cheppu."},
         {"role": "assistant", "content": "May your small braves add up to big magic. Nuvvu light avvali—tapakunda! ✨"},
     ]
     return base + demo
@@ -243,6 +243,7 @@ with st.sidebar:
        st.rerun()
 
     st.caption("Press **Enter** to send · or click **➤ Send** on the right.\nSoft palette + tiny acrostics keep the vibe personal.")
+
 
 
 
