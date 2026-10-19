@@ -227,7 +227,7 @@ if sent:
                     user_text,
                     model="gpt-4o"
                 )
-           except Exception as e:
+            except Exception as e:
                 st.error(f"Something went wrong: {e}")
                 st.stop()
             finally:
