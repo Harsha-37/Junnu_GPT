@@ -227,8 +227,9 @@ if sent:
                     user_text,
                     model="gpt-4o"
                 )
-            except Exception as e:
+           except Exception as e:
                 st.error(f"Something went wrong: {e}")
+                st.stop()
             finally:
                 st.session_state.is_thinking = False
                 st.session_state.last_latency_ms = (time.time() - t0) * 1000.0
